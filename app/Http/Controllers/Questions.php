@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use App\Models\Question;
+use App\Models\Tag;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,9 +16,15 @@ class Questions extends Controller
      * Main questions page for the user
      * @return View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $questions = Question::query()->where('created_by', Auth::user()->id)->get();
+        $defaults = [
+            'perpage' => 10
+        ];
+
+        $params = array_merge($defaults, $request->query());
+
+        $questions = Question::query()->limit($params['perpage'])->get();
 
         return \view('questions/index', [
             'questions' => $questions
@@ -41,6 +48,12 @@ class Questions extends Controller
             'description' => $request->description,
             'created_by' => Auth::user()->id
         ]);
+
+        if(count($request->tags)) {
+            foreach ($request->tags as $tag) {
+                $question->tags()->attach($tag);
+            }
+        }
 
         return redirect('/questions/' . $question->id);
     }
@@ -72,6 +85,10 @@ class Questions extends Controller
      */
     public function create(): View
     {
-        return \view('questions/create');
+        $tags = Tag::query()->where('deleted_at', '=', null)->get();
+
+        return \view('questions/create', [
+            'tags' => $tags
+        ]);
     }
 }

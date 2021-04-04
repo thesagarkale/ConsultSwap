@@ -16,7 +16,7 @@
                             <x-label for="title" :value="__('Title')"/>
 
                             <x-input id="title" class="block mt-1 w-full" type="text" name="title"
-                                     :value="old('title')" required autofocus/>
+                                     :value="old('title')" required/>
                         </div>
 
                         <div class="mt-4">
@@ -24,12 +24,23 @@
 
                             <textarea id="description" class="block rounded mt-1 border-gray-300 w-full h-40 resize-y"
                                       name="description"
-                                      :value="old('description')" required autofocus></textarea>
+                                      :value="old('description')" required></textarea>
+                        </div>
+
+                        <div class="mt-4">
+                            <x-label for="tags" :value="__('Tags')"/>
+
+                            <select class="block rounded mt-1 border-gray-300 w-full" name="tags[]" multiple>
+                                <option value="">Please select</option>
+                                @foreach($tags as $tag)
+                                    <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="mt-4">
                             <button type="submit"
-                               class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border
+                                    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border
                         border-blue-500 hover:border-transparent rounded">
                                 Create
                             </button>
