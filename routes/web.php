@@ -24,3 +24,5 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 require __DIR__.'/questions.php';
+
+require __DIR__.'/answers.php';
