@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\AnswerCreated;
+use App\Events\TickCreated;
+use App\Listeners\CreateInitTickTransaction;
+use App\Listeners\CreateTick;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        AnswerCreated::class => [
+            CreateTick::class
+        ],
+        TickCreated::class => [
+            CreateInitTickTransaction::class
+        ]
     ];
 
     /**

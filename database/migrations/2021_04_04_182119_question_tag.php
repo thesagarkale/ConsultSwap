@@ -29,6 +29,6 @@ class QuestionTag extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('question_tag');
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Answer;
 use App\Models\Question;
 use App\Models\Tag;
+use App\Services\Answers as AnswersService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Auth;
 
 class Questions extends Controller
 {
+    /**
+     * @var AnswersService
+     */
+    private $answers;
+
+    public function __construct(AnswersService $answers)
+    {
+        $this->answers = $answers;
+    }
+
     /**
      * Main questions page for the user
      * @return View
@@ -71,11 +81,11 @@ class Questions extends Controller
             return redirect('/questions');
         }
 
-        $answers = Answer::query()->where('question_id', $question->id)->get();
+        $answersPaging = $this->answers->search(['question_id' => $question->id]);
 
         return \view('questions/overview', [
             'question' => $question,
-            'answers' => $answers
+            'answers' => $answersPaging
         ]);
     }
 

@@ -8,18 +8,10 @@
                     Answers
                 </div>
                 <div>
-                    @foreach($answers as $answer)
-                        <div class="p-6 border border-gray-200 rounded last mb-4">
-                            <div class="text-sm capitalize">
-                                {{ $answer->answer }}
-                            </div>
-                            <div class="text-xs text-gray-400 pt-4">
-                                Answered by: {{ $answer->answerer->first_name }} {{ $answer->answerer->last_name }}
-                                on {{ $answer->created_at->format('j F, Y H:i:s') }}
-                            </div>
-                        </div>
+                    @foreach($answers->getResults() as $answer)
+                        <x-answer-card :answer="$answer"/>
                     @endforeach
-                    @if(!count($answers))
+                    @if(!count($answers->getResults()))
                         <div class="text-sm italic">
                             No answers yet!
                         </div>

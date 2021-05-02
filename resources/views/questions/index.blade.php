@@ -28,8 +28,9 @@
                                     {{ $question->title }}
                                 </div>
                                 <div class="text-sm pt-4">
-                                    {{ $question->description }}
+                                    <pre>{{ $question->description }}<pre>
                                 </div>
+                                <x-tags :question_id="$question->id" :tags="$question->tags"/>
                                 <div class="text-xs text-gray-400 pt-4">
                                     Asked by: {{ $question->creator->first_name }} {{ $question->creator->last_name }}
                                     on {{ $question->created_at->format('j F, Y H:i:s') }}
