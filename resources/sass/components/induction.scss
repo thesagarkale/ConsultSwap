@@ -1,0 +1,15 @@
+.c-Induction {
+    &_header {
+        font-size: 6rem;
+        line-height: 7rem;
+    }
+    &_container {
+        width: 100%;
+    }
+    &_categories {
+        &_text {
+            font-size: 3rem;
+            line-height: 4rem;
+        }
+    }
+}
