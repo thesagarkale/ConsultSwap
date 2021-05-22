@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Events\AnswerCreated;
 use App\Events\TickCreated;
+use App\Events\UserInductionComplete;
 use App\Listeners\CreateInitTickTransaction;
 use App\Listeners\CreateTick;
+use App\Listeners\UpdateUserMetadata;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         TickCreated::class => [
             CreateInitTickTransaction::class
+        ],
+        UserInductionComplete::class => [
+            UpdateUserMetadata::class
         ]
     ];
 

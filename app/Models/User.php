@@ -59,7 +59,14 @@ class User extends Authenticatable
     public function inductionComplete(): bool
     {
         return Auth::user()->metadata->filter(function ($item) {
-            return $item->meta_key === 'induction';
+                return $item->meta_key === 'induction';
+        })->count() > 0;
+    }
+
+    public function hasMetadata(string $key): bool
+    {
+        return Auth::user()->metadata->filter(function ($item) use ($key) {
+                return $item->meta_key === $key;
         })->count() > 0;
     }
 }

@@ -4,7 +4,7 @@
 namespace App\Transformers;
 
 
-use App\Models\Pagination as PaginationModel;
+use App\Support\Pagination as PaginationModel;
 use Illuminate\Support\Collection;
 
 class Pagination

@@ -5,7 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Answer;
-use App\Models\Pagination as PaginationModel;
+use App\Support\Pagination as PaginationModel;
 use App\Transformers\Pagination as PaginationTransformer;
 use Illuminate\Database\Eloquent\Model;
 
