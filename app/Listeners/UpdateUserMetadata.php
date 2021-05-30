@@ -32,6 +32,6 @@ class UpdateUserMetadata
      */
     public function handle(UserInductionComplete $event): void
     {
-        $this->metadata->createFromInput($event->getUser()->id, 'induction', true);
+        $this->metadata->store($event->getUser()->id, 'induction', true);
     }
 }

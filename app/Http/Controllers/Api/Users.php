@@ -40,14 +40,15 @@ class Users extends Controller
         ]);
 
         try {
-            $this->userMetadata->createFromInput($id, $request->input('meta_key'), $request->input('meta_value'));
+            $this->userMetadata->store($id, $request->input('meta_key'), $request->input('meta_value'));
         } catch (\Throwable $e) {
+            dd($e);
             Log::error($e->getMessage(), [
                 'exception' => $e
             ]);
         }
 
-
+        return Response::json(['success' => true]);
     }
 
     public function categories(Request $request, int $id): JsonResponse

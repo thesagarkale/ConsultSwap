@@ -4,30 +4,72 @@
 namespace App\Services;
 
 
+use App\Models\User;
 use App\Models\UserMetadata as UserMetadataModel;
+use http\Exception\InvalidArgumentException;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 class UserMetadata
 {
-    public function createFromInput(int $user_id, string $key, $value): UserMetadataModel
+    /**
+     * @var Users
+     */
+    private $users;
+
+    public function __construct(
+        Users $users
+    ) {
+        $this->users = $users;
+    }
+
+    /**
+     * @param int $userId
+     * @param string $key
+     * @return UserMetadataModel|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
+     */
+    public function find(int $id)
     {
-        $collection = UserMetadataModel::query()->where('user_id', '=', $user_id)
-            ->where('meta_key', '=', $key)->get();
+        return User::find($id);
+    }
 
-        if ($collection->count() > 1) {
-            throw new UnprocessableEntityHttpException('More that one metadata found');
-        }
+    /**
+     * @param int $userId
+     * @param string $key
+     * @param $value
+     * @return UserMetadataModel
+     */
+    public function store(int $userId, string $key, $value): User
+    {
+        $user = $this->users->find($userId);
 
-        if ($collection->count()) {
-            dd($collection->first());
+        if ($user->hasMetadata($key, $userId)) {
+            return $this->replace($userId, $key, $value);
         }
 
         $metadata = UserMetadataModel::create([
-            'user_id' => $user_id,
+            'user_id' => $userId,
             'meta_key' => $key,
             'meta_value' => $value
         ]);
 
         return $metadata;
+    }
+
+    /**
+     * @param int $userId
+     * @param string $key
+     * @param $value
+     * @return UserMetadataModel
+     */
+    public function replace(int $userId, string $key, $value): User
+    {
+        $metadata = UserMetadataModel::query()->where('user_id', '=', $userId)->where('meta_key', '=', $key)->firstOrFail();
+
+        $metadata->update([
+            'meta_value' => $value
+        ]);
+
+        return $this->find($userId);
     }
 }

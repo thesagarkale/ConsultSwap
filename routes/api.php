@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 });*/
 
-require __DIR__.'/api/categories.php';
+Route::group(['middleware' => 'api'], function () {
+    require __DIR__.'/api/categories.php';
 
-require __DIR__.'/api/users.php';
+    require __DIR__.'/api/users.php';
+});
+
 

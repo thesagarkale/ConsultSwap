@@ -6178,9 +6178,17 @@ readers do not read off random characters that represent icons */
   font-family: "Raleway", sans-serif;
 }
 
+.bg-theme-blue {
+  background: #454555;
+}
+
+.text-theme-salmon {
+  color: #FA8186;
+}
+
 .c-Induction_header {
-  font-size: 6rem;
-  line-height: 7rem;
+  font-size: 4rem;
+  line-height: 4rem;
 }
 .c-Induction_container {
   width: 100%;

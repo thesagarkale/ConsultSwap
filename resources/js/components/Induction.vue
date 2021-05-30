@@ -35,6 +35,10 @@ export default {
     },
     methods: {
         handleTransition(transition) {
+            if (transition === 'complete') {
+                this.show = false;
+            }
+
             this.activePhase = transition;
         }
     }
