@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Models\Question;
 use App\Support\Pagination;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class Questions
 {
@@ -60,12 +61,12 @@ class Questions
         if ($params['category'] ?? false) {
             if (is_array($params['category'])) {
                 $category = implode(',', $params['category']);
-                $sql = "SELECT question_id FROM category_question WHERE category_id IN :category";
+                $sql = "SELECT question_id FROM category_question WHERE category_id IN (:category)";
             } else {
                 $sql = "SELECT question_id FROM category_question WHERE category_id = :category";
             }
 
-            $query->whereIn('question_id', $sql)->setBindings(['category'=> $category ?? $params['category']]);
+            $query->whereIn('id', array_column(DB::select($sql, [$category ?? $params['category']]), 'question_id'));
         }
 
         if ($params['sort_by'] ?? false && $params['sort_mode'] ?? false) {

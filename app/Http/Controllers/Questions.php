@@ -39,8 +39,12 @@ class Questions extends Controller
     {
         $paging = $this->questions->search($request->query());
 
+        $categories = Category::query()->where('deleted_at', '=', null)->get();
+
         return \view('questions/index', [
-            'paging' => $paging
+            'paging' => $paging,
+            'categories' => $categories->all(),
+            'params' => $request->query()
         ]);
     }
 
