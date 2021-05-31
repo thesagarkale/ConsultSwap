@@ -26,6 +26,12 @@
                             {{ $question->description}}
                         </div>
                         <x-tags :question_id="$question->id" :tags="$question->tags"/>
+                        <div class="mt-4">
+                            <span class="font-bold text-gray-400 mr-4">Category:</span>
+                            @foreach($question->category as $cat)
+                                <span class="capitalize">{{$cat->label}}</span>
+                            @endforeach
+                        </div>
                         <div class="text-xs text-gray-400 pt-4">
                             Asked by: <b>{{ $question->creator->first_name }} {{ $question->creator->last_name }}</b>
                             on {{ $question->created_at->format('j F, Y H:i:s') }}
