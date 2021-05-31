@@ -19,7 +19,7 @@
 
                 <div class="hidden sm:-my-px sm:ml-5 sm:flex">
                     <x-nav-link :href="route('questions_index')" :active="request()->routeIs('questions_index')
-                    || request()->routeIs('questions_overview') || request()->routeIs('questions_create')">
+                    || request()->routeIs('questions_overview') || request()->routeIs('question_create')">
                         {{ __('Questions') }}
                     </x-nav-link>
                 </div>
