@@ -39,10 +39,8 @@ class Questions extends Controller
     {
         $paging = $this->questions->search($request->query());
 
-
-
         return \view('questions/index', [
-            'questions' => $questions
+            'paging' => $paging
         ]);
     }
 

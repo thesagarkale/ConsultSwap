@@ -10,14 +10,15 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Questions
 {
-    public function __construct()
-    {
-    }
-
+    /**
+     * Index search for Questions
+     * @param array $params
+     * @return Pagination
+     */
     public function search(array $params): Pagination
     {
         $defaults = [
-            'perpage' => 10,
+            'perpage' => 5,
             'page' => 1
         ];
 
@@ -25,15 +26,15 @@ class Questions
 
         $query = $this->getQueryFromParams($params, Question::query());
 
+        $total = $query->count();
+
         $offset = ($params['page'] - 1) * $params['perpage'];
 
         $query->offset($offset)->limit($params['perpage']);
 
-        $total = $query->count();
-
         $results = $query->get();
 
-        return new Pagination()
+        return new Pagination($total, $params['perpage'], $params['page'], $params, $results->all());
     }
 
     public function find()
