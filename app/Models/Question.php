@@ -33,4 +33,9 @@ class Question extends Model
     {
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
+
+    public function answers(): HasMany
+    {
+        return $this->hasMany(Answer::class, 'question_id');
+    }
 }
