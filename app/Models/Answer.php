@@ -32,6 +32,11 @@ class Answer extends Model
         return $this->belongsTo('App\Models\User', 'answered_by');
     }
 
+    public function question(): BelongsTo
+    {
+        return $this->belongsTo(Question::class, 'question_id');
+    }
+
     public function tick(): MorphOne
     {
         return $this->morphOne(Tick::class, 'related');

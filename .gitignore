@@ -14,3 +14,4 @@ yarn-error.log
 /docker/mysql
 .idea
 /public/fonts/vendor
+/public/videos

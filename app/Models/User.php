@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class User extends Authenticatable
 {
@@ -51,6 +52,16 @@ class User extends Authenticatable
         return $this->hasMany(UserMetadata::class, 'user_id');
     }
 
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class, 'created_by');
+    }
+
+    public function answers(): HasMany
+    {
+        return $this->hasMany(Answer::class, 'answered_by');
+    }
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class)->withTimestamps();
@@ -68,5 +79,9 @@ class User extends Authenticatable
         return User::find($user_id)->metadata->filter(function ($item) use ($key) {
                 return $item->meta_key === $key;
         })->count() > 0;
+    }
+    public function getProfileUsername(): string
+    {
+        return '@' . $this->username;
     }
 }

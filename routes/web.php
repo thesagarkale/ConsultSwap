@@ -27,3 +27,5 @@ require __DIR__.'/questions.php';
 require __DIR__.'/answers.php';
 
 require __DIR__.'/ticks.php';
+
+require __DIR__.'/profiles.php';
