@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Services\UserMetadata;
 use App\Services\Users as UsersService;
+use App\Transformers\UserTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,12 +25,21 @@ class Users extends Controller
      */
     private $userMetadata;
 
+    use UserTransformer;
+
     public function __construct(
         UsersService $users,
         UserMetadata $userMetadata
     ) {
         $this->users = $users;
         $this->userMetadata = $userMetadata;
+    }
+
+    public function fetch(Request $request, int $id): JsonResponse
+    {
+        $user = $this->users->find($id);
+
+        return Response::json($this->transformUser($user));
     }
 
     public function storeMetadata(Request $request, int $id): JsonResponse
