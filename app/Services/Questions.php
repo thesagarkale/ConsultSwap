@@ -50,6 +50,7 @@ class Questions
 
     private function getQueryFromParams(array $params, Builder $query): Builder
     {
+        //Created at greater than or equal
         if ($params['created_at_gte'] ?? false) {
             $query->where('created_at', '>=', $params['created_at_gte']);
         }

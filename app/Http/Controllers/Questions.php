@@ -55,12 +55,6 @@ class Questions extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string|min:10',
-            'category' => 'required'
-        ]);
-
         /** @var Question $question */
         $question = Question::create([
             'title' => $request->title,

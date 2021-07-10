@@ -43,12 +43,7 @@
             </div>
         </div>
     </div>
+    @if(!Auth::user()->inductionComplete())
+        <induction user-id="{{Auth::user()->id}}"></induction>
+    @endif
 </x-app-layout>
-
-<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-    <div class="p-6 bg-white border-b border-gray-200 vue-app">
-        @if(!Auth::user()->inductionComplete())
-            <induction user-id="{{Auth::user()->id}}"></induction>
-        @endif
-    </div>
-</div>
