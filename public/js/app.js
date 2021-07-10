@@ -4342,7 +4342,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CreateQuestionModal",
   props: {
@@ -4353,7 +4352,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      categories: null
+      categories: null,
+      success: false,
+      error: false
     };
   },
   mounted: function mounted() {
@@ -4365,6 +4366,15 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/categories').then(function (response) {
         _this.categories = response.data;
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      axios.post('/api/questions').then(function () {
+        _this2.success = true;
+      })["catch"](function () {
+        _this2.error = true;
       });
     }
   }
@@ -23957,7 +23967,19 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(2)
+          _c("div", { staticClass: "modal-footer" }, [
+            _c("div", { staticClass: "w-full flex justify-end" }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "px-3 py-1 bg-theme-salmon rounded-full text-white font-light text-sm",
+                  on: { click: _vm.submit }
+                },
+                [_vm._v("Create")]
+              )
+            ])
+          ])
         ]),
         _vm._v(" "),
         _c("div", {
@@ -24016,23 +24038,6 @@ var staticRenderFns = [
           placeholder: "Give a brief description ..."
         }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c("div", { staticClass: "w-full flex justify-end" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "px-3 py-1 bg-theme-salmon rounded-full text-white font-light text-sm"
-          },
-          [_vm._v("Create\n                ")]
-        )
-      ])
     ])
   }
 ]

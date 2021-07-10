@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 });*/
 
-Route::group(['middleware' => 'api'], function () {
+Route::middleware(['api', 'auth:sanctum'])->group(function () {
     require __DIR__.'/api/categories.php';
 
     require __DIR__.'/api/users.php';
