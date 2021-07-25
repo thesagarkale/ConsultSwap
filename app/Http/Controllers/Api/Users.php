@@ -25,8 +25,6 @@ class Users extends Controller
      */
     private $userMetadata;
 
-    use UserTransformer;
-
     public function __construct(
         UsersService $users,
         UserMetadata $userMetadata
@@ -39,7 +37,7 @@ class Users extends Controller
     {
         $user = $this->users->find($id);
 
-        return Response::json($this->transformUser($user));
+        return Response::json(UserTransformer::transformSingle($user));
     }
 
     public function storeMetadata(Request $request, int $id): JsonResponse

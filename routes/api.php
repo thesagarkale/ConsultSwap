@@ -22,6 +22,8 @@ Route::middleware(['api', 'auth:sanctum'])->group(function () {
     require __DIR__.'/api/categories.php';
 
     require __DIR__.'/api/users.php';
+
+    require  __DIR__.'/api/questions.php';
 });
 
 

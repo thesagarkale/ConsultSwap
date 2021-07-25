@@ -8,10 +8,10 @@
                     Answers
                 </div>
                 <div>
-                    @foreach($answers->getResults() as $answer)
+                    @foreach($answers as $answer)
                         <x-answer-card :answer="$answer"/>
                     @endforeach
-                    @if(!count($answers->getResults()))
+                    @if(!count($answers))
                         <div class="text-sm italic">
                             No answers yet!
                         </div>

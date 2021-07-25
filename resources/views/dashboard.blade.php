@@ -21,12 +21,9 @@
                     </div>
                 </div>
 
-                <div class="my-1 px-1 w-2/4 overflow-hidden">
-                    <div class="vue-app">
-                        <ask-a-question :user-id="{{\Illuminate\Support\Facades\Auth::user()->id}}"></ask-a-question>
-                    </div>
-                    <div class="mt-2 p-6 bg-white border-b border-gray-200">
-                    </div>
+                <div class="my-1 px-1 w-2/4 overflow-hidden vue-app">
+                    <ask-a-question :user-id="{{\Illuminate\Support\Facades\Auth::user()->id}}"></ask-a-question>
+                    <questions-list></questions-list>
                 </div>
 
                 <div class="my-1 px-1 w-1/4 overflow-hidden">

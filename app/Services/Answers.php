@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answers
 {
-    public function search(array $params): PaginationModel
+    public function search(array $params)
     {
         $query = Answer::query();
 
@@ -21,7 +21,7 @@ class Answers
 
         $results = $query->get();
 
-        return (new PaginationTransformer($results))->transform();
+        return $results;
     }
 
     /**

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Question extends Model
+class Question extends Model implements ModelInterface
 {
     use HasFactory, SoftDeletes;
 

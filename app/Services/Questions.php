@@ -6,7 +6,9 @@ namespace App\Services;
 
 use App\Models\Question;
 use App\Support\Pagination;
+use App\Transformers\QuestionTransformer;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Questions
@@ -19,8 +21,10 @@ class Questions
     public function search(array $params): Pagination
     {
         $defaults = [
-            'perpage' => 5,
-            'page' => 1
+            'perpage' => 10,
+            'page' => 1,
+            'sort_by' => 'created_at',
+            'sort_mode' => 'desc',
         ];
 
         $params = array_merge($defaults, $params);
@@ -35,7 +39,7 @@ class Questions
 
         $results = $query->get();
 
-        return new Pagination($total, $params['perpage'], $params['page'], $params, $results->all());
+        return new Pagination($total, $params['perpage'], $params['page'], $params, $results->all(), new QuestionTransformer());
     }
 
     public function find()
@@ -43,9 +47,17 @@ class Questions
 
     }
 
-    public function createFromInput()
+    public function createFromInput(array $input)
     {
+        $question = Question::create([
+            'title' => $input['title'],
+            'description' => $input['description'],
+            'created_by' => Auth::user()->id
+        ]);
 
+        $question->category()->attach($input['category']);
+
+        return $question;
     }
 
     private function getQueryFromParams(array $params, Builder $query): Builder

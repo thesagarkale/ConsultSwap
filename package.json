@@ -28,6 +28,9 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
         "animate.css": "^4.1.1",
-        "vue": "^2.6.12"
+        "vue": "^2.6.12",
+        "vue-observe-visibility": "^1.0.0",
+        "vue-spinner": "^1.0.4",
+        "vue-spinners": "^1.0.2"
     }
 }

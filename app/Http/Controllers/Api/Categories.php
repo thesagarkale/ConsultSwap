@@ -11,13 +11,11 @@ use Illuminate\Support\Facades\Response;
 
 class Categories extends Controller
 {
-    use CategoriesTransformer;
-
     public function get(Request $request): JsonResponse
     {
         $categories = Category::query()->where('deleted_at','=', null)->get();
 
-        $transformed = $this->transformCategories($categories->all());
+        $transformed = CategoriesTransformer::transformArray($categories->all());
 
         return Response::json($transformed);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuestionRequest;
 use App\Models\Category;
 use App\Models\Question;
 use App\Models\Tag;
@@ -10,7 +11,6 @@ use App\Services\Questions as QuestionsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class Questions extends Controller
 {
@@ -49,26 +49,13 @@ class Questions extends Controller
     }
 
     /**
-     * Creates a question
+     * Create a question
      * @param Request $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(QuestionRequest $request): RedirectResponse
     {
-        /** @var Question $question */
-        $question = Question::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'created_by' => Auth::user()->id
-        ]);
-
-        $question->category()->attach($request->category);
-
-        if (count($request->tags)) {
-            foreach ($request->tags as $tag) {
-                $question->tags()->attach($tag);
-            }
-        }
+        $question = $this->questions->createFromInput($request->input());
 
         return redirect('/questions/' . $question->id);
     }
@@ -80,6 +67,7 @@ class Questions extends Controller
      */
     public function overview(int $id)
     {
+        /** @var Question $question */
         $question = Question::query()->where('id', '=', $id)->first();
 
         if (!$question) {

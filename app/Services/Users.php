@@ -18,7 +18,7 @@ class Users
      */
     public function find(int $id): User
     {
-        return User::find($id)->firstOrFail();
+        return User::find($id);
     }
 
     /**

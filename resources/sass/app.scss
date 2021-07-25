@@ -1,11 +1,17 @@
+//Font Awesome
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
 
+//Utilities
 @import 'utilitites/transitions.scss';
 @import 'utilitites/animation.scss';
 @import 'utilitites/reset.scss';
 @import 'utilitites/colors.scss';
+@import 'utilitites/background.scss';
+
+//Components
 @import 'components/induction.scss';
 @import 'components/modals.scss';
+@import 'components/spinner.scss';

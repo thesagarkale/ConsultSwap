@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements ModelInterface
 {
     use HasApiTokens, HasFactory, Notifiable;
 
