@@ -4,7 +4,7 @@
             <question-card v-for="question in pagination.data" :key="question.id" :question="question"></question-card>
             <div v-if="pagination.data.length" v-observe-visibility="handleEndScrolledTo"></div>
         </div>
-        <tile v-if="loading" :loading="true" color="#FA8186"></tile>
+        <tile v-if="loading" :loading="true" color="FA8186"></tile>
     </div>
 </template>
 

@@ -6,10 +6,12 @@ namespace App\Services;
 
 use App\Models\Question;
 use App\Support\Pagination;
-use App\Transformers\QuestionTransformer;
+use App\Transformers\QuestionsTransformer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class Questions
 {
@@ -24,7 +26,7 @@ class Questions
             'perpage' => 10,
             'page' => 1,
             'sort_by' => 'created_at',
-            'sort_mode' => 'desc',
+            'sort_mode' => 'asc',
         ];
 
         $params = array_merge($defaults, $params);
@@ -39,14 +41,23 @@ class Questions
 
         $results = $query->get();
 
-        return new Pagination($total, $params['perpage'], $params['page'], $params, $results->all(), new QuestionTransformer());
+        return new Pagination($total, $params['perpage'], $params['page'], $params, $results->all(), new QuestionsTransformer());
     }
 
-    public function find()
+    /**
+     * @param int $id
+     * @return Builder|\Illuminate\Database\Eloquent\Model
+     */
+    public function find(int $id)
     {
-
+        return Question::query()->where('id', '=', $id)->firstOrFail();
     }
 
+    /**
+     * Creates the database entry for a question
+     * @param array $input
+     * @return mixed
+     */
     public function createFromInput(array $input)
     {
         $question = Question::create([

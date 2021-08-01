@@ -1,13 +1,11 @@
 <?php
 
-
 namespace App\Transformers;
-
 
 use App\Models\ModelInterface;
 use App\Models\Question;
 
-class QuestionTransformer implements TransformerInterface
+class QuestionsTransformer implements TransformerInterface
 {
     public static function transformSingle(ModelInterface $question): array
     {

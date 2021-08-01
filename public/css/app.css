@@ -6548,6 +6548,10 @@ button:focus {
   box-shadow: none;
 }
 
+.spinner {
+  margin: 2rem auto !important;
+}
+
 .bg-theme-blue {
   background: #454555;
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Answer extends Model
+class Answer extends Model implements ModelInterface
 {
     use HasFactory, SoftDeletes;
 
