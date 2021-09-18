@@ -68,6 +68,16 @@ class User extends Authenticatable implements ModelInterface
         return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
+    public function sentMessages(): HasMany
+    {
+        return $this->hasMany(Message::class, 'from');
+    }
+
+    public function receivedMessages(): HasMany
+    {
+        return $this->hasMany(Message::class, 'to');
+    }
+
     public function inductionComplete(): bool
     {
         return Auth::user()->metadata->filter(function ($item) {
@@ -81,6 +91,7 @@ class User extends Authenticatable implements ModelInterface
                 return $item->meta_key === $key;
         })->count() > 0;
     }
+
     public function getProfileUsername(): string
     {
         return '@' . $this->username;

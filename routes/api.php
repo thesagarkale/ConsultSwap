@@ -24,6 +24,10 @@ Route::middleware(['api', 'auth:sanctum'])->group(function () {
     require __DIR__.'/api/users.php';
 
     require  __DIR__.'/api/questions.php';
+
+    require __DIR__.'/api/messages.php';
+
+    require __DIR__.'/api/contacts.php';
 });
 
 

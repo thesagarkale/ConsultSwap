@@ -22,12 +22,14 @@
         "sass": "^1.32.8",
         "sass-loader": "^10.1.1",
         "tailwindcss": "^2.0.2",
-        "vue-loader": "^15.9.6",
+        "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
         "animate.css": "^4.1.1",
+        "laravel-echo": "^1.11.1",
+        "pusher-js": "^7.0.3",
         "vue": "^2.6.12",
         "vue-observe-visibility": "^1.0.0",
         "vue-spinner": "^1.0.4",

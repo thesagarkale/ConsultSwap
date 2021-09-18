@@ -29,3 +29,5 @@ require __DIR__.'/answers.php';
 require __DIR__.'/ticks.php';
 
 require __DIR__.'/profiles.php';
+
+require __DIR__.'/messages.php';

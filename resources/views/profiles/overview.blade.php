@@ -12,6 +12,12 @@
                     <div class="flex justify-center">
                         <x-profile-picture :user="$user"></x-profile-picture>
                     </div>
+                    <div class="flex">
+                        <a href="/messages?user={{$user->username}}" class="flex flex-col items-center mt-4 p-2 border border-theme-salmon rounded hover:text-white hover:bg-theme-salmon text-theme-salmon">
+                            <i class="far fa-lg fa-comments"></i>
+                            <span class="text-sm pt-2">Send message</span>
+                        </a>
+                    </div>
                 <!--<table class="mt-8">
                     <tr>
                         <td class="font-bold" style="width: 33%;">Name</td>

@@ -26,7 +26,7 @@ class Questions
             'perpage' => 10,
             'page' => 1,
             'sort_by' => 'created_at',
-            'sort_mode' => 'asc',
+            'sort_mode' => 'desc',
         ];
 
         $params = array_merge($defaults, $params);

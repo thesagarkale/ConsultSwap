@@ -50,7 +50,6 @@ class Users extends Controller
         try {
             $this->userMetadata->store($id, $request->input('meta_key'), $request->input('meta_value'));
         } catch (\Throwable $e) {
-            dd($e);
             Log::error($e->getMessage(), [
                 'exception' => $e
             ]);
@@ -68,7 +67,6 @@ class Users extends Controller
         try {
             $this->users->attachCategories($id, $request->input('keys'));
         } catch (\Throwable $exception) {
-            dd($exception->getMessage());
             Log::error($exception->getMessage(), [
                 'exception' => $exception,
             ]);

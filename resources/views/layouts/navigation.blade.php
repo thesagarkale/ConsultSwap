@@ -13,16 +13,22 @@
                 <!-- Navigation Links -->
                 <div class="hidden sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        <i class="fa fa-home fa-lg"></i><span class="ml-2">Dashboard</span>
                     </x-nav-link>
                 </div>
 
-                <div class="hidden sm:-my-px sm:ml-5 sm:flex">
+                <div class="hidden sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('messages_index')" :active="request()->routeIs('messages_index')">
+                        <i class="fa fa-comments fa-lg"></i><span class="ml-2">Messages</span>
+                    </x-nav-link>
+                </div>
+
+<!--                <div class="hidden sm:-my-px sm:ml-5 sm:flex">
                     <x-nav-link :href="route('questions_index')" :active="request()->routeIs('questions_index')
                     || request()->routeIs('questions_overview') || request()->routeIs('question_create')">
                         {{ __('Questions') }}
                     </x-nav-link>
-                </div>
+                </div>-->
             </div>
 
             <!-- Settings Dropdown -->
