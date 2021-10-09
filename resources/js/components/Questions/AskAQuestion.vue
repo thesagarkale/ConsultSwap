@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-        <create-question-modal :show="show" @close:modal="handle()"></create-question-modal>
+        <create-question-modal :show="show" @close:modal="handle()" @question:created="$emit('question:created')"></create-question-modal>
     </div>
 </template>
 

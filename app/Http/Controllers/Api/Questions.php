@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AnswerRequest;
 use App\Http\Requests\QuestionRequest;
+use App\Models\Answer;
 use App\Services\Answers;
 use App\Services\Questions as QuestionsService;
 use App\Transformers\AnswersTransformer;
@@ -79,5 +81,16 @@ class Questions extends Controller
         ]);
 
         return Response::json($answers->toArray());
+    }
+
+    /**
+     * @param AnswerRequest $request
+     * @return JsonResponse
+     */
+    public function createAnswer(AnswerRequest $request, int $id): JsonResponse
+    {
+        $answer = $this->answers->createFromInput(array_merge(['question_id' => $id], $request->input()));
+
+        return Response::json(AnswersTransformer::transformSingle($answer));
     }
 }

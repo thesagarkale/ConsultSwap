@@ -2,14 +2,15 @@
     <div>
         <pulse v-if="loading" :loading="true"></pulse>
         <div v-if="!loading">
-            <div v-if="totalAnswers !== 0" class="text-sm mb-2 text-gray-400 cursor-pointer font-medium">View all {{totalAnswers}} answers</div>
+            <a :href="`/questions/`+ question.id" v-if="totalAnswers !== 0" class="text-sm my-2 text-gray-400 cursor-pointer font-medium">View all {{totalAnswers}} answers</a>
             <div class="mb-2">
                 <div class="mb-2 text-sm" v-if="lastAnswer">
                     <span class="font-medium mr-1">{{lastAnswer.creator.username}}</span>answered
                     {{lastAnswer.answer}}
                 </div>
-                <div class="mb-2 text-gray-400 text-sm italic cursor-pointer" v-if="!lastAnswer">
-                    No answers yet. Be the first one to answer!
+                <div class="mb-2 text-gray-400 text-sm cursor-pointer" v-if="!lastAnswer">
+                    <span @click="showAnswerModal = true" class="italic">No answers yet. Be the first one to answer!</span>
+                    <answers-question-modal @question:answered="fetchAnswers" :show="showAnswerModal" :question="question" @close:modal="showAnswerModal = false"></answers-question-modal>
                 </div>
             </div>
         </div>
@@ -18,12 +19,13 @@
 
 <script>
 import Pulse from "../../../../node_modules/vue-spinners/src/components/PulseSpinner"
+import AnswersQuestionModal from "../Answers/AnswerQuestionModal";
 export default {
     name: "QuestionCardAnswers",
-    components: {Pulse},
+    components: {AnswersQuestionModal, Pulse},
     props: {
-        questionId: {
-            type: Number,
+        question: {
+            type: Object,
             required: true
         },
     },
@@ -32,6 +34,7 @@ export default {
             totalAnswers: null,
             answers: null,
             loading: true,
+            showAnswerModal: false,
         }
     },
     created() {
@@ -48,7 +51,8 @@ export default {
     },
     methods: {
         fetchAnswers: function () {
-            axios.get('/api/questions/' + this.questionId + '/answers').then(response => {
+            this.loading = true;
+            axios.get('/api/questions/' + this.question.id + '/answers').then(response => {
                 this.answers = response.data.data;
                 this.totalAnswers = response.data.meta.total;
             }).then(() => {

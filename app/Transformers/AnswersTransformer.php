@@ -3,26 +3,24 @@
 namespace App\Transformers;
 
 use App\Models\ModelInterface;
+use Illuminate\Support\Carbon;
 
 class AnswersTransformer implements TransformerInterface
 {
     public static function transformSingle(ModelInterface $data): array
     {
         return [
+            'id' => $data->id,
             'answer' => $data->answer,
             'creator' => UserTransformer::transformSingle($data->answerer),
-            'created_at' => $data->created_at,
+            'created_at' => (new Carbon($data->created_at))->format(' jS F Y h:i:s A'),
         ];
     }
 
     public static function transformArray(array $data): array
     {
         return array_map(function (ModelInterface $answer) {
-            return [
-                'answer' => $answer->answer,
-                'creator' => UserTransformer::transformSingle($answer->answerer),
-                'created_at' => $answer->created_at,
-            ];
+            return self::transformSingle($answer);
         }, $data);
     }
 }

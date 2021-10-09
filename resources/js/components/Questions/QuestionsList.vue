@@ -1,7 +1,8 @@
 <template>
     <div>
+        <ask-a-question :user-id="userId" @question:created="handleQuestionCreated"></ask-a-question>
         <div v-if="pagination.data.length">
-            <question-card v-for="question in pagination.data" :key="question.id" :question="question"></question-card>
+            <question-card v-for="question in pagination.data" :key="'question_'+question.id" :question="question"></question-card>
             <div v-if="pagination.data.length" v-observe-visibility="handleEndScrolledTo"></div>
         </div>
         <tile v-if="loading" :loading="true" color="FA8186"></tile>
@@ -11,9 +12,16 @@
 <script>
 import QuestionCard from "./QuestionCard";
 import Tile from "../../../../node_modules/vue-spinners/src/components/TileSpinner";
+import AskAQuestion from "./AskAQuestion";
 export default {
     name: "QuestionsList",
-    components: {QuestionCard, Tile},
+    components: {AskAQuestion, QuestionCard, Tile},
+    props: {
+        userId: {
+            type: Number,
+            required: true
+        },
+    },
     data() {
         return {
             pagination: {
@@ -32,6 +40,7 @@ export default {
     },
     methods: {
         fetch: function () {
+            this.loading = true;
             axios.get('/api/questions', {
                 params: {
                     page: this.pagination.meta.page
@@ -39,7 +48,7 @@ export default {
             }).then(response => {
                 this.pagination.data.push(...response.data.data);
                 this.pagination.meta = response.data.meta;
-            }).then(_ => {this.loading = false;})
+            }).then(() => {this.loading = false;})
         },
         handleEndScrolledTo: function (isVisible) {
             if (!isVisible) { return }
@@ -47,6 +56,17 @@ export default {
             this.loading = true;
 
             this.pagination.meta.page++;
+            this.fetch();
+        },
+        handleQuestionCreated: function () {
+            this.pagination = {
+                data: [],
+                    meta: {
+                    page: 1,
+                        pages: 1
+                }
+            };
+
             this.fetch();
         }
     },

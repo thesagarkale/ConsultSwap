@@ -7,6 +7,7 @@ use App\Support\Pagination;
 use App\Transformers\AnswersTransformer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Answers
 {
@@ -62,5 +63,14 @@ class Answers
         }
 
         return $query;
+    }
+
+    public function createFromInput(array $input): Answer
+    {
+        return Answer::create([
+            'answer' => $input['answer'],
+            'answered_by' => Auth::user()->id,
+            'question_id' => $input['question_id'],
+        ]);
     }
 }

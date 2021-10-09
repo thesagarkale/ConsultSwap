@@ -22,19 +22,24 @@
                 </div>
 
                 <div class="my-1 px-1 w-2/4 overflow-hidden vue-app">
-                    <ask-a-question :user-id="{{\Illuminate\Support\Facades\Auth::user()->id}}"></ask-a-question>
-                    <questions-list></questions-list>
+                    <questions-list :user-id="{{\Illuminate\Support\Facades\Auth::user()->id}}"></questions-list>
                 </div>
 
-                <div class="my-1 px-1 w-1/4 overflow-hidden">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        Ads here
+                <div class="w-1/4 overflow-hidden pl-4 mt-1">
+                    <div class="border-b border-gray-200 pb-4">
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            Ads here
+                        </div>
+                        <div class="p-6 my-2 bg-white border-b border-gray-200">
+                            Ads here
+                        </div>
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            Ads here
+                        </div>
                     </div>
-                    <div class="p-6 my-2 bg-white border-b border-gray-200">
-                        Ads here
-                    </div>
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        Ads here
+
+                    <div class="pt-4">
+                        <x-footer-links></x-footer-links>
                     </div>
                 </div>
             </div>

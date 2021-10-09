@@ -104,6 +104,11 @@ export default {
             }).then(() => {
                 this.spinner.complete = true;
                 this.success = true;
+            }).then(() => {
+                setTimeout(() => {
+                    this.$emit('close:modal');
+                    this.$emit('question:created');
+                }, 1000);
             }).catch(() => {
                 this.spinner.show = false;
                 this.error = true;

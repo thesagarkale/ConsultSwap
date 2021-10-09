@@ -16,3 +16,24 @@ mix.js('resources/js/app.js', 'public/js').vue().postCss('resources/css/app.css'
     require('tailwindcss'),
     require('autoprefixer'),
 ]).sass('resources/sass/app.scss', 'public/css');;
+
+
+// mix.webpackConfig({
+//     mode: "development",
+//     devtool: "inline-source-map",
+//     devServer: {
+//         headers: {
+//             'Access-Control-Allow-Origin': '*'
+//         },
+//     },
+// });
+
+
+
+mix.options({
+    hmrOptions: {
+        host: 'consultswap.local',  // site's host name
+        port: 18090,
+    }
+});
+

@@ -8,6 +8,7 @@ use App\Models\Question;
 use App\Models\Tag;
 use App\Services\Answers as AnswersService;
 use App\Services\Questions as QuestionsService;
+use App\Transformers\QuestionsTransformer;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -77,7 +78,7 @@ class Questions extends Controller
         $answersPaging = $this->answers->search(['question_id' => $question->id]);
 
         return \view('questions/overview', [
-            'question' => $question,
+            'question' => QuestionsTransformer::transformSingle($question),
             'answers' => $answersPaging
         ]);
     }
