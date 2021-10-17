@@ -82,6 +82,18 @@ class Questions
             $query->where('created_at', '<=', $params['created_at_lte']);
         }
 
+        if ($params['created_by'] ?? false) {
+            $query->where('created_by', '=', $params['created_by']);
+        }
+
+        if ($params['answered_by'] ?? false) {
+            $query->whereIn('id', function ($query) use ($params) {
+                $query->select('question_id')
+                    ->from('answers')
+                    ->where('answered_by', '=', $params['answered_by']);
+            });
+        }
+
         if ($params['category'] ?? false) {
             if (is_array($params['category'])) {
                 $category = implode(',', $params['category']);

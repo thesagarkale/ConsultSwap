@@ -6552,6 +6552,39 @@ button:focus {
   margin: 2rem auto !important;
 }
 
+input {
+  outline: none !important;
+  outline-offset: 0;
+}
+input:focus {
+  --tw-ring-offset-shadow: none !important;
+  --tw-ring-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #FA8186;
+}
+
+select {
+  outline: none !important;
+  outline-offset: 0;
+}
+select:focus {
+  --tw-ring-offset-shadow: none !important;
+  --tw-ring-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #FA8186;
+}
+
+textarea {
+  outline: none !important;
+  outline-offset: 0;
+}
+textarea:focus {
+  --tw-ring-offset-shadow: none !important;
+  --tw-ring-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #FA8186;
+}
+
 .bg-theme-blue {
   background: #454555;
 }
@@ -6567,6 +6600,17 @@ button:focus {
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+}
+
+.input-default {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-color: #d1d5db;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.input-default:focus {
+  border-bottom: 2px solid #FA8186 !important;
 }
 
 .c-Induction_header {

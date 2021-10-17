@@ -379,3 +379,36 @@ button:focus {
 .spinner {
     margin: 2rem auto !important;
 }
+
+input {
+    outline: none !important;
+    outline-offset: 0;
+    &:focus {
+        --tw-ring-offset-shadow: none !important;
+        --tw-ring-shadow: none !important;
+        box-shadow: none !important;
+        border-color: #FA8186;
+    }
+}
+
+select {
+    outline: none !important;
+    outline-offset: 0;
+    &:focus {
+        --tw-ring-offset-shadow: none !important;
+        --tw-ring-shadow: none !important;
+        box-shadow: none !important;
+        border-color: #FA8186;
+    }
+}
+
+textarea {
+    outline: none !important;
+    outline-offset: 0;
+    &:focus {
+        --tw-ring-offset-shadow: none !important;
+        --tw-ring-shadow: none !important;
+        box-shadow: none !important;
+        border-color: #FA8186;
+    }
+}

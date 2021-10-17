@@ -14,21 +14,21 @@
                     <label for="title" class="text-sm pb-1 pt-4 text-gray-400 font-bold">Title</label>
                     <input id="title"
                            v-model="input.title"
-                           class="shadow-sm border-t-0 border-l-0 border-r-0 border-b-2 border-gray-300 focus:border-theme-salmon focus:ring-0"
+                           class="input-default"
                            type="text" placeholder="Type your title ...">
                 </div>
                 <div class="flex flex-col">
                     <label for="description" class="text-sm pb-1 pt-4 text-gray-400 font-bold">Description</label>
                     <textarea id="description"
                               v-model="input.description"
-                              class="h-40 shadow-sm border-t-0 border-l-0 border-r-0 border-b-2 border-gray-300 focus:border-theme-salmon focus:ring-0"
+                              class="h-40 input-default"
                               type="text" placeholder="Give a brief description ..."></textarea>
                 </div>
                 <div class="flex flex-col">
                     <label for="category" class="text-sm pb-1 pt-4 text-gray-400 font-bold">Category</label>
                     <select id="category"
                             v-model="input.category"
-                            class="shadow-sm border-t-0 border-l-0 border-r-0 border-b-2 border-gray-300 focus:border-theme-salmon focus:ring-0">
+                            class="input-default">
                         <option value="" class="text-gray-400">Please select</option>
                         <option v-for="category in categories" :value="category.id">{{ category.label }}</option>
                     </select>

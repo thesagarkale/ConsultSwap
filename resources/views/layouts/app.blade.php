@@ -21,20 +21,11 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            <div class="fixed left-0 right-0 z-50">
+            <div class="fixed left-0 right-0 z-50 shadow">
                 @include('layouts.navigation')
-
-                <!-- Page Heading -->
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
             </div>
-
-
             <!-- Page Content -->
-            <main class="pt-32">
+            <main class="pt-14">
                 {{ $slot }}
             </main>
         </div>

@@ -1,7 +1,7 @@
 <template>
     <div class="border-gray-200 border-l">
         <div class="message-box-feed-container" v-if="contact && !loading" ref="feed">
-            <div v-for="message in messages" v-bind:key="message.id" class="rounded-b" :class="getClassItem(message)">
+            <div v-for="message in messages" v-bind:key="message.id" class="rounded-b break-words" :class="getClassItem(message)">
                 <div class="arrow-left" v-if="message.from.id === contact.id"></div>
                 <div class="arrow-right" v-if="message.to.id === contact.id"></div>
                 {{message.message}}
@@ -30,7 +30,6 @@ export default {
         }
     },
     mounted() {
-        console.log(window.Echo);
         window.Echo.private(`message.` + this.user).listen('NewMessage', (e) => {
             this.handleIncoming(e.message);
         });
