@@ -19,7 +19,8 @@ class Notifications extends Migration
             $table->string('related_to');
             $table->unsignedBigInteger('related_id');
             $table->text('notification');
-            $table->time('read_at');
+            $table->string('url')->nullable();
+            $table->dateTime('read_at')->nullable();
             $table->timestamps();
         });
 

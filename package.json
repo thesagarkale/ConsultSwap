@@ -32,6 +32,7 @@
         "pusher-js": "^7.0.3",
         "vue": "^2.6.12",
         "vue-observe-visibility": "^1.0.0",
+        "vue-simple-spinner": "^1.2.10",
         "vue-spinner": "^1.0.4",
         "vue-spinners": "^1.0.2"
     }

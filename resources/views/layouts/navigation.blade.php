@@ -22,17 +22,13 @@
                         <i class="fa fa-comments fa-lg"></i><span class="ml-2">Messages</span>
                     </x-nav-link>
                 </div>
-
-<!--                <div class="hidden sm:-my-px sm:ml-5 sm:flex">
-                    <x-nav-link :href="route('questions_index')" :active="request()->routeIs('questions_index')
-                    || request()->routeIs('questions_overview') || request()->routeIs('question_create')">
-                        {{ __('Questions') }}
-                    </x-nav-link>
-                </div>-->
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="vue-app mr-6">
+                    <notifications-wrapper user-id="{{ \Illuminate\Support\Facades\Auth::user()->id }}"></notifications-wrapper>
+                </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-white hover:text-red-400 hover:border-red-400 focus:outline-none focus:text-red-400 focus:border-red-400 transition duration-150 ease-in-out">

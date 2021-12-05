@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnswerRequest;
 use App\Http\Requests\QuestionRequest;
 use App\Models\Category;
 use App\Models\Question;
@@ -80,22 +81,6 @@ class Questions extends Controller
         return \view('questions/overview', [
             'question' => QuestionsTransformer::transformSingle($question),
             'answers' => $answersPaging
-        ]);
-    }
-
-    /**
-     * Show create question view
-     * @return View
-     */
-    public function create(): View
-    {
-        $tags = Tag::query()->where('deleted_at', '=', null)->get();
-
-        $categories = Category::query()->where('deleted_at', '=', null)->get();
-
-        return \view('questions/create', [
-            'tags' => $tags,
-            'categories' => $categories,
         ]);
     }
 }

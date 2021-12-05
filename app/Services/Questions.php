@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Services;
-
 
 use App\Models\Question;
 use App\Support\Pagination;
@@ -10,8 +8,6 @@ use App\Transformers\QuestionsTransformer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
-use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class Questions
 {

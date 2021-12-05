@@ -49,4 +49,12 @@ class NewMessage implements ShouldBroadcast
     {
         return ['message' => MessagesTransformer::transformSingle($this->message)];
     }
+
+    /**
+     * @return Message
+     */
+    public function getMessage(): Message
+    {
+        return $this->message;
+    }
 }

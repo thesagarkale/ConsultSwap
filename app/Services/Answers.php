@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\AnswerCreated;
 use App\Models\Answer;
 use App\Support\Pagination;
 use App\Transformers\AnswersTransformer;
@@ -65,12 +66,20 @@ class Answers
         return $query;
     }
 
+    /**
+     * @param array $input
+     * @return Answer
+     */
     public function createFromInput(array $input): Answer
     {
-        return Answer::create([
+        $answer = Answer::create([
             'answer' => $input['answer'],
             'answered_by' => Auth::user()->id,
             'question_id' => $input['question_id'],
         ]);
+
+        event(new AnswerCreated($answer));
+
+        return $answer;
     }
 }

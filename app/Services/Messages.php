@@ -50,6 +50,8 @@ class Messages
 
         broadcast(new NewMessage($message));
 
+        //dispatch();
+
         return MessagesTransformer::transformSingle($message);
     }
 
