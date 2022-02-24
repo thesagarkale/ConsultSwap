@@ -12,7 +12,7 @@
                 Answers
             </div>
         </div>
-        <div class="overflow-y-auto" style="max-height: 70vh">
+        <div>
             <question-card v-if="!state.tabSwitch" v-for="question in questions" :question="question" v-bind:key="question.id"></question-card>
             <tile v-if="state.loading" :loading="true" color="FA8186"></tile>
         </div>

@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="rounded overflow-hidden relative flex">
                 <div class="w-1/3 p-4">
-                    <div class="flex rounded">
+                    <div class="flex flex-col lg:flex-row rounded">
                         <div class="relative bg-gray-200 max-w-min rounded-full" style="height: fit-content">
                             <i class="fa fa-user-alt p-8 fa-lg"></i>
                             <span class="rounded-full absolute bottom-0 p-1 bg-green-300"></span>
@@ -34,12 +34,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="vue-app mt-8 flex flex-wrap items-center vue-app">
+                    <div class="mt-8 flex flex-wrap items-center vue-app">
                         @if (\Illuminate\Support\Facades\Auth::user()->id !== $user->id)
-                            <div class="rounded-full cursor-pointer border border-theme-salmon text-theme-salmon
-                            hover:bg-theme-salmon px-4 py-1 hover:text-white text-sm mt-2">
-                                <i class="fa fa-plus mr-2"></i>Follow
-                            </div>
+                            <user-profile-follow auth-user="{{\Illuminate\Support\Facades\Auth::user()->id}}" follow-user="{{$user->id}}"></user-profile-follow>
                             <user-profile-send-message :to-user="{{json_encode($user)}}"
                                                        :from-user="{{json_encode(\Illuminate\Support\Facades\Auth::user())}}">
                             </user-profile-send-message>

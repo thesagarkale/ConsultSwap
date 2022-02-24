@@ -31,3 +31,7 @@ require __DIR__.'/ticks.php';
 require __DIR__.'/profiles.php';
 
 require __DIR__.'/messages.php';
+
+Route::get('/test', function () {
+    dd(\Illuminate\Support\Facades\Auth::user()->getFollowerUsers());
+});
