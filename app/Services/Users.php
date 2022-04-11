@@ -6,12 +6,41 @@ namespace App\Services;
 
 use App\Events\UserInductionComplete;
 use App\Models\CategoryUser;
+use App\Models\Follower;
 use App\Models\User;
+use App\Support\Pagination;
+use App\Transformers\QuestionsTransformer;
+use App\Transformers\UserTransformer;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Query\Builder;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class Users
 {
+    /*public function search(array $params): Pagination
+    {
+        $defaults = [
+            'page' => 1,
+            'perpage' => 100,
+            'sort_mode' => 'asc'
+        ];
+
+        $params = array_merge($params, $defaults);
+
+        $query = $this->getQuery($params);
+
+        $total = $query->count();
+
+        $results = $query->get();
+
+        return new Pagination($total, $params['perpage'], $params['page'], $params, $results->all(), new UserTransformer());
+    }*/
+
+   /* private function getQuery(array $params): Builder
+    {
+
+    }*/
+
     /**
      * @param int $id
      * @return User
@@ -55,5 +84,54 @@ class Users
         UserInductionComplete::dispatch($user);
 
         return $this->find($user_id)->categories()->get();
+    }
+
+    /**
+     * @param int $id
+     * @return Pagination
+     */
+    public function getFollowers(int $id): Pagination
+    {
+        $user = $this->find($id);
+
+        $params = [
+            'page' => 1,
+            'perpage' => 20,
+        ];
+
+        $results = $user->getFollowerUsers();
+
+        $total = count($results);
+
+        return new Pagination($total, $params['perpage'], $params['page'], $params, $results, new UserTransformer());
+    }
+
+    /**
+     * @param int $id
+     * @return Pagination
+     */
+    public function getFollowings(int $id): Pagination
+    {
+        $user = $this->find($id);
+
+        $params = [
+            'page' => 1,
+            'perpage' => 20,
+        ];
+
+        $results = $user->getFollowingUsers();
+
+        $total = count($results);
+
+        return new Pagination($total, $params['perpage'], $params['page'], $params, $results, new UserTransformer());
+    }
+
+    public function checkIfFollows(int $id, int $follow): bool
+    {
+        $builder = Follower::query()->where('user_id', '=', $id)
+            ->where('follower_id', '=', $follow)
+            ->whereNull('deleted_at');
+
+        return $builder->count() > 0;
     }
 }

@@ -8,22 +8,14 @@ use App\Services\Users as UsersService;
 use App\Transformers\UserTransformer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
-use Monolog\Logger;
 
 class Users extends Controller
 {
-    /**
-     * @var Users
-     */
-    private $users;
+    private UsersService $users;
 
-    /**
-     * @var UserMetadata
-     */
-    private $userMetadata;
+    private UserMetadata $userMetadata;
 
     public function __construct(
         UsersService $users,
@@ -33,6 +25,11 @@ class Users extends Controller
         $this->userMetadata = $userMetadata;
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
     public function fetch(Request $request, int $id): JsonResponse
     {
         $user = $this->users->find($id);
@@ -40,6 +37,11 @@ class Users extends Controller
         return Response::json(UserTransformer::transformSingle($user));
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
     public function storeMetadata(Request $request, int $id): JsonResponse
     {
         $request->validate([
@@ -58,6 +60,11 @@ class Users extends Controller
         return Response::json(['success' => true]);
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
     public function categories(Request $request, int $id): JsonResponse
     {
         $request->validate([
@@ -73,5 +80,36 @@ class Users extends Controller
         }
 
         return Response::json(['success' => true]);
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function fetchFollowers(Request $request, int $id): JsonResponse
+    {
+        $paging = $this->users->getFollowers($id);
+
+        return Response::json($paging->toArray());
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function fetchFollowings(Request $request, int $id): JsonResponse
+    {
+        $paging = $this->users->getFollowings($id);
+
+        return Response::json($paging->toArray());
+    }
+
+    public function follows(Request $request, int $id, int $follows): JsonResponse
+    {
+        $result = $this->users->checkIfFollows($id, $follows);
+
+        return Response::json(['result' =>  $result]);
     }
 }

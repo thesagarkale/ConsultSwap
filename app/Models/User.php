@@ -100,6 +100,11 @@ class User extends Authenticatable implements ModelInterface
 
     public function followers(): HasMany
     {
+        return $this->hasMany(Follower::class, 'follower_id');
+    }
+
+    public function following(): HasMany
+    {
         return $this->hasMany(Follower::class, 'user_id');
     }
 
@@ -114,8 +119,14 @@ class User extends Authenticatable implements ModelInterface
         return $followers;
     }
 
-    public function hasFollower(User $user)
+    public function getFollowingUsers(): array
     {
+        $followings = [];
 
+        foreach ($this->following as $follower) {
+            $followings[] = $follower->user;
+        }
+
+        return $followings;
     }
 }

@@ -1,8 +1,8 @@
 <template>
     <div class="mt-2 rounded overflow-hidden border w-full bg-white mx-3 md:mx-0 lg:mx-0">
-        <div class="full-width-and-fixed-height-background h-72 relative"
+<!--        <div class="full-width-and-fixed-height-background h-72 relative"
              style="background: url(https://picsum.photos/800);">
-        </div>
+        </div>-->
         <div class="px-3 pb-2">
             <div class="pt-2">
                 <div class="mb-2 text-gray-500 font-bold">

@@ -4,10 +4,8 @@ namespace App\Services;
 
 use App\Events\NewMessage;
 use App\Models\Message;
-use App\Models\User;
 use App\Support\Pagination;
 use App\Transformers\MessagesTransformer;
-use App\Transformers\UserTransformer;
 use Illuminate\Support\Facades\Auth;
 
 class Messages
@@ -40,7 +38,7 @@ class Messages
      * @param array $input
      * @return array
      */
-    public function createFromInput(array $input): array
+    public function createFromInput(array $input): Message
     {
         $message = Message::create([
             'to' => $input['to'],
@@ -52,7 +50,7 @@ class Messages
 
         //dispatch();
 
-        return MessagesTransformer::transformSingle($message);
+        return $message;
     }
 
     /**
