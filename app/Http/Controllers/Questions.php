@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AnswerRequest;
 use App\Http\Requests\QuestionRequest;
 use App\Models\Category;
 use App\Models\Question;
-use App\Models\Tag;
 use App\Services\Answers as AnswersService;
 use App\Services\Questions as QuestionsService;
 use App\Transformers\QuestionsTransformer;

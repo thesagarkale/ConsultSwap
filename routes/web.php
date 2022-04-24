@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Welcome;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Welcome::class, 'index']);
 
 require __DIR__.'/dashboard.php';
 
