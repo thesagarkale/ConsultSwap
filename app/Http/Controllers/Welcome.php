@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 
 class Welcome extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
         $categories = Category::inRandomOrder()->limit(20)->get();
 

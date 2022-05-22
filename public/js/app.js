@@ -5616,6 +5616,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -34301,7 +34302,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "cursor-pointer",
+          staticClass: "cursor-pointer w-full",
           on: {
             click: function($event) {
               _vm.show = true
@@ -34633,16 +34634,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass:
-        "mt-2 rounded overflow-hidden border w-full bg-white mx-3 md:mx-0 lg:mx-0"
-    },
+    { staticClass: "mt-2 rounded overflow-hidden border w-full bg-white" },
     [
-      _c("div", {
-        staticClass: "full-width-and-fixed-height-background h-72 relative",
-        staticStyle: { background: "url(https://picsum.photos/800)" }
-      }),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "px-3 pb-2" },
@@ -34680,7 +34673,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "mr-4" }, [
               _c("i", { staticClass: "fas fa-check" }),
-              _vm._v(" Answer\n                "),
+              _vm._v(" Answer\n                    "),
               _c(
                 "span",
                 {
@@ -34689,9 +34682,9 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                    " +
+                    "\n                        " +
                       _vm._s(_vm.question.answers.length) +
-                      "\n                "
+                      "\n                    "
                   )
                 ]
               )
@@ -34712,11 +34705,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "mr-4" }, [
       _c("i", { staticClass: "far fa-thumbs-up" }),
-      _vm._v(" Like\n                "),
+      _vm._v(" Like\n                    "),
       _c(
         "span",
         { staticClass: "rounded-full px-2 bg-theme-dark text-white text-xs" },
-        [_vm._v("\n                    5.5k\n                ")]
+        [_vm._v("\n                        5.5k\n                    ")]
       )
     ])
   },
@@ -34726,11 +34719,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", [
       _c("i", { staticClass: "far fa-share-square" }),
-      _vm._v(" Share\n                "),
+      _vm._v(" Share\n                    "),
       _c(
         "span",
         { staticClass: "rounded-full px-2 bg-theme-dark text-white text-xs" },
-        [_vm._v("\n                        20\n                ")]
+        [_vm._v("\n                            20\n                    ")]
       )
     ])
   }
@@ -34892,11 +34885,7 @@ var render = function() {
         [
           _c(
             "div",
-            {
-              staticClass:
-                "full-width-and-fixed-height-background h-72 relative",
-              staticStyle: { background: "url(https://picsum.photos/800)" }
-            },
+            { staticClass: "full-width-and-fixed-height-background relative" },
             [
               _c(
                 "div",
@@ -34908,7 +34897,13 @@ var render = function() {
                       staticClass:
                         "py-1 px-3 bg-theme-salmon text-white rounded-full text-xs ml-1"
                     },
-                    [_vm._v("#" + _vm._s(category.label))]
+                    [
+                      _vm._v(
+                        "\n                    #" +
+                          _vm._s(category.label) +
+                          "\n                "
+                      )
+                    ]
                   )
                 }),
                 0
@@ -34982,9 +34977,18 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "mt-4 mr-4" },
+        { staticClass: "mt-4 md:mr-4" },
         [_c("answer-question-textarea", { attrs: { question: _vm.question } })],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "my-2 font-bold text-gray-400 text-sm border-b-2 border-gray-300 mr-4 pb-1 mb-2"
+        },
+        [_vm._v("Answers")]
       ),
       _vm._v(" "),
       _vm._l(_vm.question.answers, function(answer) {
@@ -35130,6 +35134,7 @@ var render = function() {
     "div",
     [
       _c("ask-a-question", {
+        staticClass: "w-full",
         attrs: { "user-id": _vm.userId },
         on: { "question:created": _vm.handleQuestionCreated }
       }),

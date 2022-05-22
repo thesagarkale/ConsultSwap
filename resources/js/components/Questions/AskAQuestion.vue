@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="cursor-pointer" @click="show = true">
+        <div class="cursor-pointer w-full" @click="show = true">
             <div class="p-6 border bg-white rounded overflow-hidden shadow-sm">
                 <user-label :user-id="userId"></user-label>
                 <div class="border-b-2 border-gray-200 text-gray-500 text-xlg font-bold pb-4 mt-4 cursor-pointer">Ask a

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ask-a-question :user-id="userId" @question:created="handleQuestionCreated"></ask-a-question>
+        <ask-a-question class="w-full" :user-id="userId" @question:created="handleQuestionCreated"></ask-a-question>
         <div v-if="pagination.data.length">
             <question-card v-for="question in pagination.data" :key="'question_'+question.id" :question="question"></question-card>
             <div v-if="pagination.data.length" v-observe-visibility="handleEndScrolledTo"></div>

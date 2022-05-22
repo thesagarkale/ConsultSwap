@@ -303,6 +303,12 @@
                     </div>
                 @endforeach
             </div>
+            <a href="/login" class="mt-4 text-theme-salmon flex justify-end items-center hover:text-theme-salmon">
+                <div class="pr-4">
+                    Click here for more topics
+                </div>
+                <i class="fa fa-solid fa-arrow-right"></i>
+            </a>
         </div>
     </section>
     <section class="bg-theme-salmon">
@@ -310,9 +316,81 @@
             <div class="hero-title md:text-4xl text-2xl font-bold flex items-center">
                 Get started
                 <a class="z-30 py-3 px-6 text-lg border-white border text-white hover:bg-white hover:text-theme-salmon rounded ml-4"
-                   href="#">
+                   href="/signup">
                     Sign up
                 </a>
+            </div>
+        </div>
+    </section>
+    <section class="relative bg-theme-blue">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-full text-white">
+            <div class="md:flex items-start w-full">
+                <div>
+                    <div class="text-theme-salmon text-xl font-bold">
+                        Useful links
+                    </div>
+                    <div class="border-b-4 border-theme-salmon mb-2" style="width: 25%;"></div>
+                    <div class="text-white flex flex-col">
+                        <a href="/about" class="hover:text-theme-salmon my-1">About us</a>
+                        <a href="/careers" class="hover:text-theme-salmon mb-1">Careers</a>
+                        <a href="/terms" class="hover:text-theme-salmon mb-1">Terms of use</a>
+                        <a href="/privacy-policy" class="hover:text-theme-salmon mb-1">Privacy policy</a>
+                        <a href="/blog" class="hover:text-theme-salmon">Blog</a>
+                    </div>
+                </div>
+                <div class="md:ml-32 mt-4">
+                    <div class="text-theme-salmon text-xl font-bold">
+                        Follow us
+                    </div>
+                    <div class="border-b-4 border-theme-salmon mb-2" style="width: 25%;"></div>
+                    <div class="text-2xl">
+                        <i class="fab fa-brands fa-facebook-square mr-1 hover:text-theme-salmon cursor-pointer"></i>
+                        <i class="fab fa-brands fa-twitter mr-1 hover:text-theme-salmon cursor-pointer"></i>
+                        <i class="fab fa-brands fa-instagram mr-1 hover:text-theme-salmon cursor-pointer"></i>
+                        <i class="fab fa-brands fa-youtube mr-1 hover:text-theme-salmon cursor-pointer"></i>
+                        <i class="fab fa-brands fa-linkedin hover:text-theme-salmon cursor-pointer"></i>
+                    </div>
+                </div>
+                <div class="md:ml-32 mt-4">
+                    <div class="text-theme-salmon text-xl font-bold">
+                        Subscribe
+                    </div>
+                    <div class="border-b-4 border-theme-salmon mb-2" style="width: 25%;"></div>
+                    <div class="text-2xl">
+                        <form>
+                            <x-input id="email" class="block text-theme-blue rounded" placeholder="john.doe@example.com" type="email" name="email" />
+                          <!--<input class="text-theme-blue rounded" type="email" placeholder="john.doe@example.com"><br>-->
+                            <button class="py-1 px-3 text-sm border-white border text-theme-salmon
+                            border-theme-salmon hover:bg-theme-salmon hover:text-white rounded mt-4">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="md:ml-32 mt-4">
+                    <div class="text-theme-salmon text-xl font-bold">
+                        Contact us
+                    </div>
+                    <div class="border-b-4 border-theme-salmon mb-2" style="width: 25%;"></div>
+                    <div class="">
+                        5 St. Albans Crescent, <br>
+                        Newcastle upon Tyne,<br>
+                        NE65UQ.
+                        <div class="mt-2">
+                            <a href="mailto:info@consultpeer.com" class="hover:text-theme-salmon">
+                                info@consultpeer.com
+                            </a>
+                        </div>
+
+                        <div class="mt-2">
+                            +44 077777777777
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end items-center mt-8">
+                <x-application-logo :width="130"></x-application-logo>
+                <div class="ml-4 text-xs">
+                    &#169; 2022 Consultpeer Ltd.
+                </div>
             </div>
         </div>
     </section>
