@@ -11,8 +11,9 @@
             <button type="button"
                     @click="submitAnswer"
                     :disabled="disableSubmit"
-                    class="rounded-full text-white py-1 px-2 text-sm font-bold"
-                    :class="bgColorClass"
+                    class="rounded text-white py-1 px-2 text-sm font-bold
+                    bg-transparent text-theme-salmon hover:bg-theme-salmon
+                    hover:text-white border-theme-salmon border"
             >
                 Submit
             </button>

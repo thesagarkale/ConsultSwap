@@ -25,8 +25,8 @@
                         <div class="border-b-2 border-theme-salmon text-theme-salmon text-lg font-bold">
                             Discover
                         </div>
-                        <div class="pt-4">
-                            Discovery links here
+                        <div class="pt-4 flex flex-wrap">
+                            <x-categories :categories="$categories"></x-categories>
                         </div>
                     </div>
                     <div class="py-4 border-b border-gray-200">

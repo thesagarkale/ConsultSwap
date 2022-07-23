@@ -14,14 +14,9 @@ use Illuminate\Http\Request;
 
 class Questions extends Controller
 {
-    /**
-     * @var AnswersService
-     */
-    private $answers;
-    /**
-     * @var QuestionsService
-     */
-    private $questions;
+    private AnswersService $answers;
+
+    private QuestionsService $questions;
 
     public function __construct(
         AnswersService $answers,
@@ -76,9 +71,12 @@ class Questions extends Controller
 
         $answersPaging = $this->answers->search(['question_id' => $question->id]);
 
+        $categories = Category::inRandomOrder()->limit(20)->get();
+
         return \view('questions/overview', [
             'question' => QuestionsTransformer::transformSingle($question),
-            'answers' => $answersPaging
+            'answers' => $answersPaging,
+            'categories' => $categories,
         ]);
     }
 }

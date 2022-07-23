@@ -4239,6 +4239,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AnswerQuestionTextarea",
@@ -33352,8 +33353,8 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "rounded-full text-white py-1 px-2 text-sm font-bold",
-          class: _vm.bgColorClass,
+          staticClass:
+            "rounded text-white py-1 px-2 text-sm font-bold\n                bg-transparent text-theme-salmon hover:bg-theme-salmon\n                hover:text-white border-theme-salmon border",
           attrs: { type: "button", disabled: _vm.disableSubmit },
           on: { click: _vm.submitAnswer }
         },

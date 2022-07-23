@@ -19,13 +19,7 @@
                             Discover
                         </div>
                         <div class="flex flex-wrap">
-                            @foreach($categories as $category)
-                                <div class="capitalize mt-2 mr-2 text-sm
-                                px-4 py-1 border rounded-full break-words border-theme-salmon text-theme-salmon
-                                hover:text-white hover:bg-red-400 hover:border-red-400 cursor-pointer">
-                                    {{ $category->label }}
-                                </div>
-                            @endforeach
+                            <x-categories :categories="$categories"></x-categories>
                         </div>
                     </div>
                 </div>
@@ -34,7 +28,7 @@
                     <questions-list :user-id="{{\Illuminate\Support\Facades\Auth::user()->id}}"></questions-list>
                 </div>
 
-                <div class="md:w-1/4 overflow-hidden p-2 md:pl-4 mt-1">
+                <div class="md:w-1/4 overflow-hidden p-2 md:pl-4 mt-1 z-0">
                     <div class="border-b border-gray-200 pb-4">
                         <div class="p-6 bg-white border-b border-gray-200 text-white font-bold relative z-50"
                              style="background: url(https://picsum.photos/400?random=1&&blur=1);">

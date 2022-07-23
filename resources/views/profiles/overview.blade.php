@@ -5,10 +5,10 @@
         </h2>
     </x-slot>
 
-    <div class="pt-8 pb-4">
+    <div class="pt-4 md:pt-8 md:pb-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="rounded overflow-hidden relative flex">
-                <div class="w-1/3 p-4">
+            <div class="rounded overflow-hidden relative md:flex">
+                <div class="md:w-1/3 p-4">
                     <div class="flex rounded">
                         <div class="relative bg-gray-200 max-w-min rounded-full" style="height: fit-content">
                             <i class="fa fa-user-alt p-8 fa-lg"></i>
@@ -89,7 +89,7 @@
                         <x-footer-links></x-footer-links>
                     </div>
                 </div>
-                <div class="vue-app w-2/3 p-4 ml-4 rounded">
+                <div class="vue-app md:w-2/3 p-4 ml-4 rounded">
                     <user-profile-tabs user-id="{{$user->id}}"></user-profile-tabs>
                 </div>
             </div>
