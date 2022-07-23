@@ -6,7 +6,7 @@
                 <div class="absolute top-0 right-0 pt-2 pr-2">
                     <span v-for="category in question.categories"
                           class="py-1 px-3 bg-theme-salmon text-white rounded-full text-xs ml-1">
-                        #{{category.label }}
+                        #{{ category.label }}
                     </span>
                 </div>
             </div>
