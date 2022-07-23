@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -13,8 +14,12 @@ class Dashboard extends Controller
     {
     }
 
-    public function index(Request $request): View
+    public function index(): View
     {
-        return view('dashboard');
+        $categories = Category::inRandomOrder()->limit(20)->get();
+
+        return view('dashboard', [
+            'categories' => $categories->all(),
+        ]);
     }
 }

@@ -15,3 +15,4 @@ yarn-error.log
 .idea
 /public/fonts/vendor
 /public/videos
+.DS_Store

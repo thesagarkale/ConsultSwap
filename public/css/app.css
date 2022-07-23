@@ -6630,17 +6630,32 @@ textarea:focus {
 }
 .modal-container {
   background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 43rem;
-  margin: 10% auto 0 auto;
-  z-index: 2100;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  max-height: 90%;
-  overflow: auto;
+  bottom: 0;
+  z-index: 2100;
+}
+@media (min-width: 768px) {
+  .modal-container {
+    border-radius: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 43rem;
+    margin: 10% auto 0 auto;
+    max-height: 90%;
+    overflow: auto;
+    bottom: unset;
+  }
+}
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .modal-header {
   display: flex;
@@ -6658,15 +6673,6 @@ textarea:focus {
 }
 .modal-footer {
   padding: 1rem;
-}
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 2000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 .u-CircleLoader {
@@ -6782,6 +6788,44 @@ textarea:focus {
     height: 3.5em;
     width: 1.75em;
     opacity: 1;
+  }
+}
+.hero-banner {
+  height: 100vh;
+}
+@media (min-width: 768px) {
+  .hero-banner {
+    height: 60vh;
+  }
+}
+
+.hero-title {
+  font-family: "Montserrat", sans-serif;
+}
+
+.hero-second-title {
+  font-family: "Nunito", sans-serif;
+}
+
+.what-we-do-svg {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .what-we-do-svg {
+    width: 24rem;
+    height: 20rem;
+  }
+}
+
+.why-consultpeer-items {
+  width: 100%;
+}
+.why-consultpeer-items :hover > svg {
+  fill: "#FA8186";
+}
+@media (min-width: 768px) {
+  .why-consultpeer-items {
+    width: 31%;
   }
 }
 /*! tailwindcss v2.0.3 | MIT License | https://tailwindcss.com */
@@ -25754,6 +25798,7 @@ select {
 }
 
 .sticky {
+  position: -webkit-sticky;
   position: sticky;
 }
 
@@ -56804,6 +56849,7 @@ h1 {
   }
 
   .sm\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -87763,6 +87809,7 @@ h1 {
   }
 
   .md\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -118722,6 +118769,7 @@ h1 {
   }
 
   .lg\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -149681,6 +149729,7 @@ h1 {
   }
 
   .xl\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -180640,6 +180689,7 @@ h1 {
   }
 
   .\32xl\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 

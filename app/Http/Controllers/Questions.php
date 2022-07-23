@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AnswerRequest;
 use App\Http\Requests\QuestionRequest;
 use App\Models\Category;
 use App\Models\Question;
-use App\Models\Tag;
 use App\Services\Answers as AnswersService;
 use App\Services\Questions as QuestionsService;
 use App\Transformers\QuestionsTransformer;
@@ -16,14 +14,9 @@ use Illuminate\Http\Request;
 
 class Questions extends Controller
 {
-    /**
-     * @var AnswersService
-     */
-    private $answers;
-    /**
-     * @var QuestionsService
-     */
-    private $questions;
+    private AnswersService $answers;
+
+    private QuestionsService $questions;
 
     public function __construct(
         AnswersService $answers,
@@ -78,9 +71,12 @@ class Questions extends Controller
 
         $answersPaging = $this->answers->search(['question_id' => $question->id]);
 
+        $categories = Category::inRandomOrder()->limit(20)->get();
+
         return \view('questions/overview', [
             'question' => QuestionsTransformer::transformSingle($question),
-            'answers' => $answersPaging
+            'answers' => $answersPaging,
+            'categories' => $categories,
         ]);
     }
 }

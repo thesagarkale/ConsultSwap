@@ -3,18 +3,32 @@
         display: none;
     }
     &-container {
+        @media (min-width: $md) {
+            border-radius: 15px;
+            box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+            width: 43rem;
+            margin: 10% auto 0 auto;
+            max-height: 90%;
+            overflow: auto;
+            bottom: unset;
+        }
+
         background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
-        width: 43rem;
-        margin: 10% auto 0 auto;
-        z-index: 2100;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        max-height: 90%;
-        overflow: auto;
+        bottom: 0;
+        z-index: 2100;
+    }
+    &-overlay {
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 2000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
     &-header {
         display: flex;
@@ -32,14 +46,5 @@
     }
     &-footer {
         padding: 1rem;
-    }
-    &-overlay {
-        background: rgba(0, 0, 0, 0.3);
-        z-index: 2000;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
     }
 }

@@ -11,8 +11,10 @@
 @import 'utilitites/colors.scss';
 @import 'utilitites/background.scss';
 @import 'utilitites/inputs.scss';
+@import "utilitites/vars.scss";
 
 //Components
 @import 'components/induction.scss';
 @import 'components/modals.scss';
 @import 'components/spinner.scss';
+@import 'components/hero.scss';

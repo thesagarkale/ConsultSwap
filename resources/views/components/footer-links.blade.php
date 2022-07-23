@@ -1,4 +1,4 @@
-<div class="flex flex-wrap text-sm text-gray-400">
+<div class="hidden md:block flex flex-wrap text-sm text-gray-400">
     <a href="/about" class="hover:text-theme-salmon">About us</a>
     <span class="mx-2 font-bold">.</span>
     <a href="/careers" class="hover:text-theme-salmon">Careers</a>
